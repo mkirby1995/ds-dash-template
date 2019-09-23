@@ -1,1 +1,1 @@
-# ds-plotly-template
+# ds-dash-template
