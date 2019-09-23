@@ -452,11 +452,6 @@ def predict(year, continent):
     return f'{y_pred:.0f} years'
 ```
 
-### Exit the Pipenv shell
-```
-exit
-```
-
 ## Commit to GitHub
 
 ```
