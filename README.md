@@ -16,6 +16,7 @@
   - [Add a Plotly plot](#add-a-plotly-plot)
   - [Add a scikit-learn pipeline](#add-a-scikit-learn-pipeline)
   - [Exit the Pipenv shell](#exit-the-pipenv-shell)
+- [Commit to GitHub](#commit-to-github)
 - [Deploy to Heroku](#deploy-to-heroku)
 
 ## How to
@@ -456,6 +457,14 @@ def predict(year, continent):
 exit
 ```
 
+## Commit to GitHub
+
+```
+git add .
+git commit -m "Commit message"
+git push
+```
+
 ## Deploy to Heroku
 
 1. Watch [DS - Data Engineering - Productization and Cloud - Web Application Deployment](https://www.youtube.com/watch?v=W75JAe7vFF0) (12 minute video from Training Kit).
@@ -480,9 +489,17 @@ If the gunicorn command is not recognized, install gunicorn:
 conda install -c phumke gunicorn
 ```
 
-6. Go to https://dashboard.heroku.com/new-app and give your app a name.
+6. Create a requirements.txt for your environment's dependencies:
 
-7. Follow the commands that Heroku gives you. For example:
+```
+pip freeze > requirements.txt
+```
+
+7. [Commit to GitHub](#commit-to-github).
+
+8. Go to https://dashboard.heroku.com/new-app and give your app a name.
+
+9. Follow the commands that Heroku gives you. For example:
 
 ```
 heroku login
@@ -490,13 +507,7 @@ heroku login
 heroku git:remote -a your-app-name
 ```
 
-8. Use this command:
-
-```
-pip freeze > requirements.txt
-```
-
-8. [Deploy](https://devcenter.heroku.com/articles/getting-started-with-python?singlepage=true#deploy-the-app) to Heroku:
+10. [Deploy](https://devcenter.heroku.com/articles/getting-started-with-python?singlepage=true#deploy-the-app) to Heroku:
 
 ```
 git push heroku master
