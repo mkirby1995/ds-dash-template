@@ -485,10 +485,14 @@ If the gunicorn command is not recognized, install gunicorn:
 conda install -c phumke gunicorn
 ```
 
-6. Create a requirements.txt for your environment's dependencies:
+6. Create a file named `requirements.txt` for your environment's dependencies.
+
+For example:
 
 ```
-pip freeze > requirements.txt
+dash
+dash-bootstrap-components
+gunicorn
 ```
 
 7. [Commit to GitHub](#commit-to-github).
