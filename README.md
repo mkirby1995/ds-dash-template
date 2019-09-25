@@ -15,7 +15,6 @@
   - [Add a matplotlib plot](#add-a-matplotlib-plot)
   - [Add a Plotly plot](#add-a-plotly-plot)
   - [Add a scikit-learn pipeline](#add-a-scikit-learn-pipeline)
-  - [Exit the Pipenv shell](#exit-the-pipenv-shell)
 - [Commit to GitHub](#commit-to-github)
 - [Deploy to Heroku](#deploy-to-heroku)
 
@@ -350,10 +349,7 @@ Follow the instructions in the [official Dash tutorial](https://dash.plot.ly/), 
 
 ### Add a scikit-learn pipeline
 
-1. [Activate the Pipenv shell](#activate-the-pipenv-shell)
-2. [Install packages](#install-packages) (scikit-learn, anything else you want)
-3. [Launch Jupyter Notebook](#launch-jupyter-notebook)
-4. In your notebook, fit your pipeline. For example:
+1. In a notebook, fit your pipeline. For example:
 
 ```python
 import category_encoders as ce
@@ -373,23 +369,23 @@ pipeline = make_pipeline(
 pipeline.fit(X, y)
 ```
 
-5. ["Pickle" the pipeline](https://scikit-learn.org/stable/modules/model_persistence.html):
+2. ["Pickle" the pipeline](https://scikit-learn.org/stable/modules/model_persistence.html):
 
 ```python
 from joblib import dump
 dump(pipeline, 'pipeline.joblib')
 ```
 
-6. Copy the file `pipeline.joblib` into the `assets/` directory.
+3. Copy the file `pipeline.joblib` into the `assets/` directory.
 
-7. Edit the file, `pages/<pagename>.py`. Add this code at the top, to load the pipeline.
+4. Edit the file, `pages/<pagename>.py`. Add this code at the top, to load the pipeline.
 
 ```python
 from joblib import load
 pipeline = load('assets/pipeline.joblib')
 ```
 
-8. Add [Dash components](https://dash.plot.ly/dash-core-components) for inputs. For example:
+5. Add [Dash components](https://dash.plot.ly/dash-core-components) for inputs. For example:
 
 ```python
 column1 = dbc.Col(
@@ -423,7 +419,7 @@ column1 = dbc.Col(
 )
 ```
 
-9. Add Dash component for output. For example:
+6. Add Dash component for output. For example:
 
 ```python
 column2 = dbc.Col(
@@ -434,7 +430,7 @@ column2 = dbc.Col(
 )
 ```
 
-10. Add [callback](https://dash.plot.ly/getting-started-part-2) to update output based on inputs. For example:
+7. Add [callback](https://dash.plot.ly/getting-started-part-2) to update output based on inputs. For example:
 
 ```python
 import pandas as pd
