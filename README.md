@@ -376,16 +376,47 @@ from joblib import dump
 dump(pipeline, 'pipeline.joblib')
 ```
 
-3. Copy the file `pipeline.joblib` into the `assets/` directory.
+3. Get version numbers for every package you used in your pipeline. For example, you can use code like this:
 
-4. Edit the file, `pages/<pagename>.py`. Add this code at the top, to load the pipeline.
+```python
+import joblib
+import sklearn
+import category_encoders as ce
+print(f'joblib=={joblib.__version__}')
+print(f'scikit-learn=={sklearn.__version__}')
+print(f'category_encoders=={ce.__version__}')
+```
+
+You’ll get output that will look similar to this:
+
+```
+joblib==0.13.2
+scikit-learn==0.21.3
+category_encoders==2.0.0
+```
+
+Copy & paste those lines into your `requirements.txt` file. It may look like this:
+
+```
+dash
+dash-bootstrap-components
+gunicorn
+pandas
+joblib==0.13.2
+scikit-learn==0.21.3
+category_encoders==2.0.0
+```
+
+4. Copy the file `pipeline.joblib` into the `assets/` directory.
+
+5. Edit the file, `pages/<pagename>.py`. Add this code at the top, to load the pipeline.
 
 ```python
 from joblib import load
 pipeline = load('assets/pipeline.joblib')
 ```
 
-5. Add [Dash components](https://dash.plot.ly/dash-core-components) for inputs. For example:
+6. Add [Dash components](https://dash.plot.ly/dash-core-components) for inputs. For example:
 
 ```python
 column1 = dbc.Col(
@@ -419,7 +450,7 @@ column1 = dbc.Col(
 )
 ```
 
-6. Add Dash component for output. For example:
+7. Add Dash component for output. For example:
 
 ```python
 column2 = dbc.Col(
@@ -430,7 +461,7 @@ column2 = dbc.Col(
 )
 ```
 
-7. Add [callback](https://dash.plot.ly/getting-started-part-2) to update output based on inputs. For example:
+8. Add [callback](https://dash.plot.ly/getting-started-part-2) to update output based on inputs. For example:
 
 ```python
 import pandas as pd
@@ -469,7 +500,7 @@ git push
 
 4. [Activate the conda environment](#activate-the-conda-environment).
 
-5. Test your app locally, with [Gunicorn](https://gunicorn.org/):
+5. You're encouraged, but not required, to test your app locally, with [Gunicorn](https://gunicorn.org/):
 
 ```
 gunicorn run:server
@@ -481,6 +512,8 @@ If the gunicorn command is not recognized, install gunicorn:
 conda install -c phumke gunicorn
 ```
 
+Gunicorn may not work locally on Windows.
+
 6. Create a file named `requirements.txt` for your environment's dependencies.
 
 For example:
@@ -489,6 +522,7 @@ For example:
 dash
 dash-bootstrap-components
 gunicorn
+pandas
 ```
 
 7. [Commit to GitHub](#commit-to-github).
