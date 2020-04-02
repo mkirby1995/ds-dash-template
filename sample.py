@@ -1,10 +1,11 @@
 import dash
 import dash_cytoscape as cyto
 import dash_html_components as html
-import  pickle
+import pickle
 import math
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
+
 
 # Load extra layouts
 cyto.load_extra_layouts()
@@ -24,7 +25,7 @@ cyto.Cytoscape(
     elements=test,
     style={'width': '100%', 'height': '800px'},
     layout={
-        'name': 'cose-bilkent',
+        'name': 'dagre'
     },
     stylesheet=[
         # Group selectors
